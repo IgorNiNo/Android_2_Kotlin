@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Андроид_2_Котлин</string>
+    <string name="helloWorld">Привет Мир!</string>
+    <string name="button">Кнопка</string>
+    <string name="setOnButton">Поздравляю! Вы нажали на кнопку</string>
+</resources>
