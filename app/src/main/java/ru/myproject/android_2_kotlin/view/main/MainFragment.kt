@@ -50,9 +50,9 @@ class MainFragment : Fragment() {
         viewModel.getWeatherFromLocalSourceRus()
     }
 
-    override fun onDestroy() {
-        adapter.removeListener()
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
     }
 
     private fun changeWeatherDataSet() =
