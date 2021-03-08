@@ -13,7 +13,6 @@ class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
-//    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -38,37 +37,6 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    //    private fun renderData(appState: AppState) {
-//        when (appState) {
-//            is AppState.Success -> {
-//                val weatherData = appState.weatherData
-//                binding.loadingLayout.visibility = View.GONE
-//                setData(weatherData)
-//            }
-//            is AppState.Loading -> {
-//                binding.loadingLayout.visibility = View.VISIBLE
-//            }
-//            is AppState.Error -> {
-//                binding.loadingLayout.visibility = View.GONE
-//                Snackbar
-//                    .make(binding.mainView, getString(R.string.error), Snackbar.LENGTH_INDEFINITE)
-//                    .setAction(getString(R.string.reload)) { viewModel.getWeatherFromLocalSource() }
-//                    .show()
-//            }
-//        }
-//    }
-//
-//    private fun setData(weatherData: Weather) {
-//        binding.cityName.text = weatherData.city.city
-//        binding.cityCoordinates.text = String.format(
-//            getString(R.string.city_coordinates),
-//            weatherData.city.lat.toString(),
-//            weatherData.city.lon.toString()
-//        )
-//        binding.temperatureValue.text = weatherData.temperature.toString()
-//        binding.feelsLikeValue.text = weatherData.feelsLike.toString()
-//    }
-//
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
