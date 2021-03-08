@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainView"
@@ -20,8 +21,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/defaultCity" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/cityCoordinates"
@@ -30,8 +30,7 @@
             android:layout_marginTop="@dimen/margin_5_dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cityName"
-            tools:text="@string/geographCoord" />
+            app:layout_constraintTop_toBottomOf="@+id/cityName" />
 
         <TextView
             android:id="@+id/temperatureLabel"

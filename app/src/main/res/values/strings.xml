@@ -2,9 +2,8 @@
     <string name="app_name">Weather App</string>
     <string name="temperature_label">Temperature</string>
     <string name="feels_like_label">Feels Like</string>
-    <string name="city_coordinates">lat/lon: %s, %s"</string>
+    <string name="city_coordinates" translatable="false">lat/lon: %s, %s"</string>
     <string name="error">Error</string>
     <string name="reload">Reload</string>
-    <string name="defaultCity">Moscow</string>
-    <string name="geographCoord">latitude/longitude</string>
+
 </resources>
