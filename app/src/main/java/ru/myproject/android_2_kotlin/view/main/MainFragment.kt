@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import ru.myproject.android_2_kotlin.R
 import ru.myproject.android_2_kotlin.databinding.FragmentMainBinding
 import ru.myproject.android_2_kotlin.model.Weather
-import ru.myproject.android_2_kotlin.view.DetailsFragment
+import ru.myproject.android_2_kotlin.view.details.DetailsFragment
 import ru.myproject.android_2_kotlin.viewmodel.AppState
 import ru.myproject.android_2_kotlin.viewmodel.MainViewModel
 
