@@ -26,7 +26,7 @@ class MainFragment : Fragment() {
         override fun onItemViewClick(weather: Weather) {
             activity?.supportFragmentManager?.apply {
                 beginTransaction()
-                    .add(R.id.container, DetailsFragment.newInstance(Bundle().apply {
+                    .replace(R.id.container, DetailsFragment.newInstance(Bundle().apply {
                         putParcelable(DetailsFragment.BUNDLE_EXTRA, weather)
                     }))
                     .addToBackStack("")
