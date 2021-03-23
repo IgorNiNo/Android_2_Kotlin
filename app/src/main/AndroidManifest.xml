@@ -19,7 +19,5 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".view.details.DetailsService" />
-
     </application>
 </manifest>
