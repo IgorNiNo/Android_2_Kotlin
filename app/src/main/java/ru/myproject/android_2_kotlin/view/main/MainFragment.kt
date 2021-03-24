@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
 import ru.myproject.android_2_kotlin.R
 import ru.myproject.android_2_kotlin.databinding.FragmentMainBinding
 import ru.myproject.android_2_kotlin.model.Weather
+import ru.myproject.android_2_kotlin.utils.showSnackBar
 import ru.myproject.android_2_kotlin.view.details.DetailsFragment
 import ru.myproject.android_2_kotlin.viewmodel.AppState
 import ru.myproject.android_2_kotlin.viewmodel.MainViewModel
@@ -81,15 +81,6 @@ class MainFragment : Fragment() {
                     { viewModel.getWeatherFromLocalSourceRus() })
             }
         }
-    }
-
-    private fun View.showSnackBar(
-        text: String,
-        actionText: String,
-        action: (View) -> Unit,
-        length: Int = Snackbar.LENGTH_INDEFINITE
-    ) {
-        Snackbar.make(this, text, length).setAction(actionText, action).show()
     }
 
     interface OnItemViewClickListener {

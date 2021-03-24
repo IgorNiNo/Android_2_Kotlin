@@ -2,12 +2,12 @@ package ru.myproject.android_2_kotlin.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.myproject.android_2_kotlin.model.Repository
-import ru.myproject.android_2_kotlin.model.RepositoryImpl
+import ru.myproject.android_2_kotlin.repository.MainRepository
+import ru.myproject.android_2_kotlin.repository.MainRepositoryImpl
 
 class MainViewModel(
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
-    private val repositoryImpl: Repository = RepositoryImpl()
+    private val repositoryImpl: MainRepository = MainRepositoryImpl()
 ) :
     ViewModel() {
 
