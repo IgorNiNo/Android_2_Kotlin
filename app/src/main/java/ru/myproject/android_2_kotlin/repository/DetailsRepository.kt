@@ -1,7 +1,11 @@
 package ru.myproject.android_2_kotlin.repository
 
-import okhttp3.Callback
+import ru.myproject.android_2_kotlin.model.WeatherDTO
 
 interface DetailsRepository {
-    fun getWeatherDetailsFromServer(requestLink: String, callback: Callback)
+    fun getWeatherDetailsFromServer(
+        lat: Double,
+        lon: Double,
+        callback: retrofit2.Callback<WeatherDTO>
+    )
 }

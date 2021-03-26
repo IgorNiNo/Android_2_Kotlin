@@ -14,12 +14,6 @@ import ru.myproject.android_2_kotlin.utils.showSnackBar
 import ru.myproject.android_2_kotlin.viewmodel.AppState
 import ru.myproject.android_2_kotlin.viewmodel.DetailsViewModel
 
-private const val PROCESS_ERROR = "Обработка ошибки"
-
-// когда тариф "Тестовый" закончится, необходимо будет в запросе forecast поменять на informers
-private const val MAIN_LINK = "https://api.weather.yandex.ru/v2/forecast?"
-private const val REQUEST_API_KEY = "X-Yandex-API-Key"
-
 class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
@@ -37,8 +31,8 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         weatherBundle = arguments?.getParcelable(BUNDLE_EXTRA) ?: Weather()
-        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getWeatherFromRemoteSource(MAIN_LINK + "lat=${weatherBundle.city.lat}&lon=${weatherBundle.city.lon}")
+        viewModel.detailsLiveData.observe(viewLifecycleOwner, Observer { renderData(it) })
+        viewModel.getWeatherFromRemoteSource(weatherBundle.city.lat, weatherBundle.city.lon)
     }
 
     override fun onDestroyView() {
@@ -63,7 +57,12 @@ class DetailsFragment : Fragment() {
                 binding.mainView.showSnackBar(
                     getString(R.string.error),
                     getString(R.string.reload),
-                    { viewModel.getWeatherFromRemoteSource(MAIN_LINK + "lat=${weatherBundle.city.lat}&lon=${weatherBundle.city.lon}") })
+                    {
+                        viewModel.getWeatherFromRemoteSource(
+                            weatherBundle.city.lat,
+                            weatherBundle.city.lon
+                        )
+                    })
             }
         }
     }
