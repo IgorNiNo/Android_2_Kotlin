@@ -1,5 +1,6 @@
 package ru.myproject.android_2_kotlin.view.details
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import coil.api.load
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
+import kotlinx.android.synthetic.main.fragment_details.*
 import ru.myproject.android_2_kotlin.R
 import ru.myproject.android_2_kotlin.model.Weather
 import ru.myproject.android_2_kotlin.databinding.FragmentDetailsBinding
@@ -78,6 +82,16 @@ class DetailsFragment : Fragment() {
         binding.temperatureValue.text = weather.temperature.toString()
         binding.feelsLikeValue.text = weather.feelsLike.toString()
         binding.weatherCondition.text = weather.condition
+
+        headerIcon.load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")
+
+        weather.icon?.let {
+            GlideToVectorYou.justLoadImage(
+                activity,
+                Uri.parse("https://yastatic.net/weather/i/icons/blueye/color/svg/${it}.svg"),
+                weatherIcon
+            )
+        }
     }
 
     companion object {
