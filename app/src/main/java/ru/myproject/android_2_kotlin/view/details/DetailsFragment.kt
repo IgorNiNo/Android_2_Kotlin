@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
-import kotlinx.android.synthetic.main.fragment_details.*
 import ru.myproject.android_2_kotlin.R
-import ru.myproject.android_2_kotlin.model.Weather
 import ru.myproject.android_2_kotlin.databinding.FragmentDetailsBinding
+import ru.myproject.android_2_kotlin.model.City
+import ru.myproject.android_2_kotlin.model.Weather
 import ru.myproject.android_2_kotlin.utils.showSnackBar
 import ru.myproject.android_2_kotlin.viewmodel.AppState
 import ru.myproject.android_2_kotlin.viewmodel.DetailsViewModel
@@ -35,7 +34,7 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         weatherBundle = arguments?.getParcelable(BUNDLE_EXTRA) ?: Weather()
-        viewModel.detailsLiveData.observe(viewLifecycleOwner, Observer { renderData(it) })
+        viewModel.detailsLiveData.observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getWeatherFromRemoteSource(weatherBundle.city.lat, weatherBundle.city.lon)
     }
 
@@ -48,16 +47,16 @@ class DetailsFragment : Fragment() {
         when (appState) {
             is AppState.Success -> {
                 binding.mainView.visibility = View.VISIBLE
-                binding.loadingLayout.visibility = View.GONE
+                binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
                 setWeather(appState.weatherData[0])
             }
             is AppState.Loading -> {
                 binding.mainView.visibility = View.GONE
-                binding.loadingLayout.visibility = View.VISIBLE
+                binding.includedLoadingLayout.loadingLayout.visibility = View.VISIBLE
             }
             is AppState.Error -> {
                 binding.mainView.visibility = View.VISIBLE
-                binding.loadingLayout.visibility = View.GONE
+                binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.mainView.showSnackBar(
                     getString(R.string.error),
                     getString(R.string.reload),
@@ -72,31 +71,46 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setWeather(weather: Weather) {
-        val city = weatherBundle.city
-        binding.cityName.text = city.city
-        binding.cityCoordinates.text = String.format(
-            getString(R.string.city_coordinates),
-            city.lat.toString(),
-            city.lon.toString()
-        )
-        binding.temperatureValue.text = weather.temperature.toString()
-        binding.feelsLikeValue.text = weather.feelsLike.toString()
-        binding.weatherCondition.text = weather.condition
+        with(binding) {
 
-        headerIcon.load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")
+            val city = weatherBundle.city
+            saveCity(city, weather)
 
-        weather.icon?.let {
-            GlideToVectorYou.justLoadImage(
-                activity,
-                Uri.parse("https://yastatic.net/weather/i/icons/blueye/color/svg/${it}.svg"),
-                weatherIcon
+            cityName.text = city.city
+            cityCoordinates.text = String.format(
+                getString(R.string.city_coordinates),
+                city.lat.toString(),
+                city.lon.toString()
             )
+
+            headerIcon.load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")
+
+            weather.icon?.let {
+                GlideToVectorYou.justLoadImage(
+                    activity,
+                    Uri.parse("https://yastatic.net/weather/i/icons/blueye/color/svg/${it}.svg"),
+                    weatherIcon
+                )
+                temperatureValue.text = weather.temperature.toString()
+                feelsLikeValue.text = weather.feelsLike.toString()
+                weatherCondition.text = weather.condition
+            }
         }
+    }
+
+    private fun saveCity(city: City, weather: Weather) {
+        viewModel.saveCityToDB(
+            Weather(
+                city,
+                weather.temperature,
+                weather.feelsLike,
+                weather.condition
+            )
+        )
     }
 
     companion object {
         const val BUNDLE_EXTRA = "weather"
-
         fun newInstance(bundle: Bundle): DetailsFragment {
             val fragment = DetailsFragment()
             fragment.arguments = bundle
