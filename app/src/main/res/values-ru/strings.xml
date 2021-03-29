@@ -7,4 +7,5 @@
     <string name="error">Ошибка</string>
     <string name="reload">Перезагрузка</string>
     <string name="menu_title_history">История</string>
+    <string name="content_provider">Поставщик содержимого</string>
 </resources>
