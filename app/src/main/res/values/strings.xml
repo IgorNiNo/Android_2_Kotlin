@@ -7,4 +7,16 @@
     <string name="reload">Reload</string>
     <string name="menu_title_history">history</string>
     <string name="content_provider">Content provider</string>
+    <string name="dialog_button_close">Close</string>
+    <string name="dialog_title_no_gps">Access to geolocation is closed</string>
+    <string name="dialog_message_no_gps">Allow access to geolocation if you want to know the weather of the current location</string>
+    <string name="dialog_title_gps_turned_off">GPS disabled</string>
+    <string name="dialog_message_last_location_unknown">The whereabouts are unknown. Turn on GPS if you want to get the weather at the current address</string>
+    <string name="dialog_message_last_known_location">The last known location is shown. Turn on GPS if you want to update your location</string>
+    <string name="dialog_rationale_title">Access to geolocation</string>
+    <string name="dialog_rationale_meaasge">Explanation</string>
+    <string name="dialog_rationale_give_access">Grant access</string>
+    <string name="dialog_rationale_decline">Do not</string>
+    <string name="dialog_address_title">Your address</string>
+    <string name="dialog_address_get_weather">Find out the weather</string>
 </resources>
