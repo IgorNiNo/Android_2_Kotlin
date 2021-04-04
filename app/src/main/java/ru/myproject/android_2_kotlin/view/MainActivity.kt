@@ -7,6 +7,7 @@ import android.view.MenuItem
 import ru.myproject.android_2_kotlin.R
 import ru.myproject.android_2_kotlin.databinding.ActivityMainBinding
 import ru.myproject.android_2_kotlin.view.experiments.ContentProviderFragment
+import ru.myproject.android_2_kotlin.view.googlemaps.GoogleMapsFragment
 import ru.myproject.android_2_kotlin.view.history.HistoryFragment
 import ru.myproject.android_2_kotlin.view.main.MainFragment
 
@@ -46,6 +47,16 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager.apply {
                     beginTransaction()
                         .add(R.id.container, ContentProviderFragment.newInstance())
+                        .addToBackStack("")
+                        .commitAllowingStateLoss()
+                }
+                true
+            }
+
+            R.id.menu_google_maps -> {
+                supportFragmentManager.apply {
+                    beginTransaction()
+                        .add(R.id.container, GoogleMapsFragment())
                         .addToBackStack("")
                         .commitAllowingStateLoss()
                 }
