@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "732030488419",
+    "project_id": "infra-ratio-309707",
+    "storage_bucket": "infra-ratio-309707.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732030488419:android:2bff28a0280a22fec4cd56",
+        "android_client_info": {
+          "package_name": "ru.myproject.android_2_kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732030488419-qlaujm3uanvo7063qc21gkn255c7tl72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdnPQpM0Yi_SH0Oin5ITRMXaz25WQ8feA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732030488419-qlaujm3uanvo7063qc21gkn255c7tl72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
